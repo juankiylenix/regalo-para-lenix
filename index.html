@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>¡Feliz Cumpleaños!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --pink-light: #ff66b3;
+            --pink-dark: #cc3366;
+            --black-dark: #121212;
+            --black: #000000;
+            --white: #fff0f6;
+            --font-family: 'Poppins', sans-serif;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: var(--black-dark);
+            color: var(--pink-light);
+            font-family: var(--font-family);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        header h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            color: var(--pink-light);
+            text-shadow: 0 0 8px var(--pink-dark);
+            user-select: none;
+        }
+        header p {
+            font-size: 1.25rem;
+            color: var(--pink-dark);
+            margin-top: 0.25rem;
+            user-select: none;
+        }
+        main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+            gap: 2.5rem;
+            width: 100%;
+            max-width: 960px;
+        }
+        .tarjeta {
+            background: linear-gradient(145deg, var(--black), #2a2a2a);
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            color: var(--white);
+            box-shadow: 0 0 8px var(--pink-dark);
+            position: relative;
+            cursor: default;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .tarjeta:hover, .tarjeta:focus-within {
+            transform: translateY(-8px);
+            box-shadow: 0 0 18px var(--pink-light);
+            outline: none;
+        }
+        .tarjeta img {
+            max-width: 160px;
+            margin: 0 auto 1.25rem;
+            user-select: none;
+            pointer-events: none;
+        }
+        .tarjeta h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--pink-light);
+        }
+        .tarjeta p {
+            color: var(--pink-dark);
+            font-size: 1rem;
+            line-height: 1.4;
+            user-select: none;
+        }
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+        .globo {
+            position: absolute;
+            width: 60px;
+            height: 90px;
+            background: var(--pink-light);
+            border-radius: 35% 35% 35% 35% / 45% 45% 55% 55%;
+            filter: drop-shadow(0 2px 2px rgba(255, 102, 179, 0.55));
+            animation: floatUpDown 4s ease-in-out infinite;
+        }
+        .globo::after {
+            content: "";
+            position: absolute;
+            bottom: -28px;
+            left: 50%;
+            width: 2px;
+            height: 25px;
+            background: var(--pink-dark);
+            transform: translateX(-50%);
+            border-radius: 1px;
+            filter: drop-shadow(0 2px 2px rgba(255, 102, 179, 0.55));
+        }
+        .globo:nth-child(odd) { animation-delay: 0s; }
+        .globo:nth-child(even) { animation-delay: 2s; }
+
+        .tarjeta-globos .globo {
+            top: 5px;
+            left: 10px;
+            background: #ff99cc;
+        }
+        .tarjeta-globos .globo:nth-child(2) {
+            top: 10px;
+            right: 10px;
+            background: #ff66b3;
+        }
+        .tarjeta-conquista .globo {
+            top: 10px;
+            right: 15px;
+            background: #e60073;
+        }
+        .tarjeta-inspiracion .globo {
+        top: 15px;
+        left: 15px;
+        background: #ff66b3;
+        }
+        .corazon {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background-color: var(--pink-light);
+            top: 20px;
+            right: 20px;
+            clip-path: polygon(50% 0%, 61% 14%, 75% 15%, 85% 25%, 85% 38%, 75% 60%, 50% 85%, 25% 60%, 15% 38%, 15% 25%, 25% 15%, 39% 14%);
+            filter: drop-shadow(0 0 4px var(--pink-dark));
+            animation: pulseHeart 2s ease-in-out infinite;
+            z-index: 1;
+        }
+        @keyframes pulseHeart {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+        .imagen-inspiracion {
+            width: 120px;
+            height: auto;
+            margin-bottom: 1rem;
+            user-select: none;
+            filter: drop-shadow(0 0 6px var(--pink-dark));
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            .tarjeta {
+                padding: 1.5rem 1rem;
+            }
+            .tarjeta img, .imagen-regalo {
+                max-width: 100px;
+            }
+        }
+        .razones {
+            background-color: var(--black);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 0 10px var(--pink-dark);
+        }
+        .razones h2 {
+            color: var(--pink-light);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .razones ul {
+            list-style-type: none;
+            padding-left: 0;
+            color: var(--white);
+        }
+        .razones li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: var(--pink-dark);
+            border-radius: 8px;
+        }
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--pink-light);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Para Mi Mejor Amigo</h1>
+        <p>Por tu cumpleaños 🥺</p>
+    </header>
+    <main>
+        <section class="tarjeta tarjeta-globos" tabindex="0" aria-label="Tarjeta con globos">
+            <div class="globo" style="top:10px; left:10px;"></div>
+            <div class="globo" style="top:20px; left:50px;"></div>
+            <img src="modoromantico.jpg" alt="Modo Romántico" />
+            <h2>Lo importante que sos</h2>
+            <p>Cada vez que hablamos se ilumina mi día, sos esa persona que hace que mis días sean más alegres. Estoy muy agradecido por tenerte en mi vida.</p>
+            <div class="corazon"></div>
+        </section>
+
+        <section class="tarjeta tarjeta-conquista" tabindex="0" aria-label="Tarjeta conquista">
+            <img src="oteconquisto.jpg" alt="Que Te Conquisto Eh" />
+            <h2>Lo lindo de vos</h2>
+            <p>Te considero alguien muy generoso y bondadoso, siempre sabes cómo hacer que me sienta especial e importante y eso es lo que más valoro de vos.</p>
+            <div class="corazon"></div>
+            <div class="globo" style="top:10px; right:15px; background:#ff66b3;"></div>
+        </section>
+
+        <section class="tarjeta tarjeta-inspiracion" tabindex="0" aria-label="Tarjeta inspiración">
+        <img class="imagen-inspiracion" src="ungatitoenamorado.jpg" alt="Un Gatito Enamorado" />
+        <h2>Lo que me inspira</h2>
+        <p>Tenés un corazón enorme y una forma de ser que me inspira demasiado. Tu amistad es el mejor regalo que me pudo dar la vida, gracias por ser como sos.</p>
+        <div class="corazon"></div>
+        <div class="globo"></div>
+        </section>
+
+    </main>
+
+    <section class="razones">
+        <h2>50 razones por las que te amo tanto y por las que sos una persona increíble y valiosa:</h2>
+        <ul>
+            <li>1. Siempre estás cuando más te necesito.</li>
+            <li>2. Me escuchás sin juzgar.</li>
+            <li>3. Tenés un corazón enorme.</li>
+            <li>4. Me hacés reír incluso en mis peores días.</li>
+            <li>5. Me brindaste tu amistad sin condiciones.</li>
+            <li>6. Confío en vos como en nadie más.</li>
+            <li>7. Sos leal de verdad y siempre estás tanto en las buenas y en las malas.</li>
+            <li>8. Tenés una forma única de levantarme el ánimo.</li>
+            <li>9. Nunca me diste la espalda.</li>
+            <li>10. Sos paciente y sabés entender sin que diga mucho.</li>
+            <li>11. Tu humor me genera buena vibra.</li>
+            <li>12. Siempre estás para mí.</li>
+            <li>13. Sabés decir lo justo en el momento justo.</li>
+            <li>14. Me hacés sentir que valgo.</li>
+            <li>15. Sos una presencia que me calma cuando estoy mal.</li>
+            <li>16. Siempre sos honesto conmigo.</li>
+            <li>17. Me mostraste lo que significa una verdadera amistad.</li>
+            <li>18. Tenés gestos que hablan más que mil palabras.</li>
+            <li>19. Conmigo nunca fingiste y siempre fuiste tú y valoro esa confianza que tienes contigo para hacer eso.</li>
+            <li>20. Tenés una energía que me ayuda siempre.</li>
+            <li>21. Sos fuerte incluso cuando no todo va bien y eso me hace ver lo increíble que eres.</li>
+            <li>22. Me inspirás a ser una mejor persona.</li>
+            <li>23. Tenés una bondad enorme que no espera nada a cambio.</li>
+            <li>24. Me hacés sentir que no estoy solo.</li>
+            <li>25. Tenés un humor que me salvó los días más veces de las que crees.</li>
+            <li>26. Sos único y divertido.</li>
+            <li>27. Tratás bien a todos.</li>
+            <li>28. Cuando hablo contigo me siento en paz.</li>
+            <li>29. Te preocupás de verdad por los que querés.</li>
+            <li>30. Sabés empatizar con los demás.</li>
+            <li>31. Sabés perdonar y reconocer errores.</li>
+            <li>32. Tenés principios que admiro.</li>
+            <li>33. Me hacés sentir cómodo siendo quien soy.</li>
+            <li>34. No necesitás grandes palabras para que vea que realmente estás ahí para mí.</li>
+            <li>35. Me motivás a no rendirme.</li>
+            <li>36. Siempre me proteges y cuidas para evitar mis tonterías.</li>
+            <li>37. Aceptás mis defectos sin dejar de valorarme.</li>
+            <li>38. Con vos puedo hablar de todo y sin filtros.</li>
+            <li>39. Tu amistad es mi refugio.</li>
+            <li>40. Sos constante en lo que te propones y estoy muy orgulloso de ti por eso.</li>
+            <li>41. Siempre me escuchaste y aconsejaste muy bien.</li>
+            <li>42. Sos muy humilde.</li>
+            <li>43. Tu forma de amar.</li>
+            <li>44. Sabés cuándo hablar y cuándo solo acompañar.</li>
+            <li>45. Nunca me hiciste sentir diferente.</li>
+            <li>46. Me hacés sentir afortunado por tenerte como amigo.</li>
+            <li>47. Te considero una bendición en mi vida.</li>
+            <li>48. Siempre me trataste con todo el bien y amor que tienes.</li>
+            <li>49. Tu amistad y presencia me ayudaron más de lo que crees.</li>
+            <li>50. Simplemente vos y no cambiaría nada de ti, eres la persona más linda que conozco :)</li>
+        </ul>
+    </section>
+
+    <footer class="footer">
+        <p>Por acá terminaría mi regalo, para mí sos una inspiración y alguien que merece ser valorado, si alguien te hace pensar lo contrario yo estaré aquí para recordártelo.</p>
+        <p>Te amo muchísimo bro (lloré haciendo esto jsjsjs), enserio realmente te aprecio demasiado y ojalá tenerte toda la vida como mi amigo, disfruta tu cumpleaños ❤️</p>
+        <p>Atte: Juanki 🥺</p>
+    </footer>
+</body>
+</html>
+
